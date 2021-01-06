@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./three.js"></script>
+    <script src="./WebGL.js"></script>
+    <script src="./OrbitControls.js"></script>
+    <script src="./stats.min.js"></script>
+    <script src="./initThree.js"></script>
+    <title>init</title>
+    <style>
+      #three {
+        width: 500px;
+        height: 400px;
+        border: 3px solid #dddddd;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="three"></div>
+  </body>
+  <script>
+    // 天天写new renderer, scene, camera 太麻烦了  封装成一个init方法
+    // @Param number 渲染的宽度
+    // @Param number 渲染的高度
+    // @Param blooen 是否显示坐标系
+    // @Param blooen 是否显示渲染帧率
+    init(500, 400, true, true);
+    // 之后在这里写添加mesh的方法
+    function render() {
+      // 循环动画
+      requestAnimationFrame(render);
+      renderer.render(scene, camera);
+      stats.update();
+    }
+    render();
+  </script>
+</html>
